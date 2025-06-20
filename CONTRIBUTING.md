@@ -62,7 +62,7 @@ src/
 
 ### Prerequisites
 
-- Node.js 20+ or Bun
+- Node.js 22+ or Bun
 - TypeScript knowledge
 - Salesforce Developer Account (for testing)
 - Docker (optional, for container testing)
