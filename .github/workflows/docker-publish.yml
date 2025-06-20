@@ -26,12 +26,6 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_HUB_USERNAME }}/salesforce-mcp-ts
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha,format=short
             type=raw,value=latest,enable={{is_default_branch}}
       
       - name: Login to Docker Hub
@@ -44,7 +38,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
+          # Temporarily disable cache while transitioning to Node 22
+          # cache: 'npm'
       
       - name: Install dependencies
         run: npm ci
