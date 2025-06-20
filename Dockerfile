@@ -1,6 +1,6 @@
 # Multi-stage build for MCP Salesforce TypeScript Server
 # Stage 1: Build stage
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -31,7 +31,7 @@ RUN npm run build
 RUN ls -la dist/
 
 # Stage 2: Production stage
-FROM node:20-alpine AS production
+FROM node:22-alpine AS production
 
 # Install dumb-init for proper signal handling
 RUN apk add --no-cache dumb-init
