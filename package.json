@@ -34,7 +34,8 @@
     "code-quality": "npm run lint:check && npm run format:check && npm run test:run",
     "docker:build": "docker build -t mcp-salesforce-ts .",
     "docker:run": "docker-compose up -d",
-    "docker:stop": "docker-compose down"
+    "docker:stop": "docker-compose down",
+    "docker:publish": "./scripts/docker-publish.sh"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.13.0",
