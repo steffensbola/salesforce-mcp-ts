@@ -191,7 +191,6 @@ docker pull steffensbola/salesforce-mcp-ts:latest
 docker run -p 3000:3000 \
   -e SALESFORCE_USERNAME=your_salesforce_username \
   -e SALESFORCE_PASSWORD=your_salesforce_password \
-  -e SF_LOGIN_URL=https://login.salesforce.com \
   -e SALESFORCE_CLIENT_ID=your_consumer_key \
   -e SALESFORCE_CLIENT_SECRET=your_consumer_secret \
   -e SALESFORCE_SECURITY_TOKEN=your_token \
@@ -207,7 +206,6 @@ docker run -p 3000:3000 \
 ```bash
 SF_USERNAME=your_salesforce_username
 SF_PASSWORD=your_salesforce_password
-SF_LOGIN_URL=https://login.salesforce.com
 DOCKER_HUB_USERNAME=your_dockerhub_username
 ```
 

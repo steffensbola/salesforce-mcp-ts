@@ -24,7 +24,6 @@ services:
       - SF_USERNAME=${SF_USERNAME:-}
       - SF_PASSWORD=${SF_PASSWORD:-}
       - SF_SECURITY_TOKEN=${SF_SECURITY_TOKEN:-}
-      - SF_LOGIN_URL=${SF_LOGIN_URL:-https://test.salesforce.com}
       # Option 2: Direct Token Authentication
       - SALESFORCE_ACCESS_TOKEN=${SALESFORCE_ACCESS_TOKEN:-}
       - SALESFORCE_INSTANCE_URL=${SALESFORCE_INSTANCE_URL:-}
