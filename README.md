@@ -179,6 +179,74 @@ docker run -e SALESFORCE_CLIENT_ID=your_key \
            mcp-salesforce-ts
 ```
 
+## Docker Usage
+
+### Using the Docker Image from Docker Hub
+
+```bash
+# Pull the latest version
+docker pull steffensbola/salesforce-mcp-ts:latest
+
+# Run the container
+docker run -p 3000:3000 \
+  -e SALESFORCE_USERNAME=your_salesforce_username \
+  -e SALESFORCE_PASSWORD=your_salesforce_password \
+  -e SALESFORCE_CLIENT_ID=your_consumer_key \
+  -e SALESFORCE_CLIENT_SECRET=your_consumer_secret \
+  -e SALESFORCE_SECURITY_TOKEN=your_token \
+  -e SALESFORCE_SANDBOX=true_or_false \
+  steffensbola/salesforce-mcp-ts:latest
+```
+
+
+### Using Docker Compose
+
+1. Create a `.env` file with your environment variables:
+
+```bash
+SF_USERNAME=your_salesforce_username
+SF_PASSWORD=your_salesforce_password
+DOCKER_HUB_USERNAME=your_dockerhub_username
+```
+
+2. Run using Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+### Building and Publishing the Docker Image
+
+A convenience script is provided to build and publish the Docker image:
+
+```bash
+# Install script dependencies
+chmod +x scripts/docker-publish.sh
+
+# Build and publish
+./scripts/docker-publish.sh --username your_dockerhub_username
+```
+
+Options:
+- `--username`, `-u`: Docker Hub username (required)
+- `--tag`, `-t`: Specify tag (default: latest)
+- `--version`, `-v`: Specify version (default: from package.json)
+
+### GitHub Actions
+
+This repository includes a GitHub Actions workflow for automated builds and publishing. To use it:
+
+1. Add the following secrets to your GitHub repository:
+   - `DOCKER_HUB_USERNAME`: Your Docker Hub username
+   - `DOCKER_HUB_TOKEN`: A Docker Hub access token (create one at [Docker Hub](https://hub.docker.com/settings/security))
+
+2. The workflow will automatically build and publish images:
+   - On pushes to the `main` branch
+   - When a tag is pushed (format: `v*.*.*`)
+   - When manually triggered
+
+The published Docker image will be available at `your_username/salesforce-mcp-ts` on Docker Hub.
+
 ## MCP Configuration
 
 ### Claude Desktop

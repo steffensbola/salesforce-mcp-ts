@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mcp-server:
+    image: ${DOCKER_HUB_USERNAME:-username}/salesforce-mcp-ts:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: salesforce-mcp-ts
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Salesforce Authentication - Option 1: Username-Password OAuth Flow
+      - SALESFORCE_CLIENT_ID=${SALESFORCE_CLIENT_ID:-}
+      - SALESFORCE_CLIENT_SECRET=${SALESFORCE_CLIENT_SECRET:-}
+      - SALESFORCE_USERNAME=${SALESFORCE_USERNAME:-}
+      - SALESFORCE_PASSWORD=${SALESFORCE_PASSWORD:-}
+      - SALESFORCE_SECURITY_TOKEN=${SALESFORCE_SECURITY_TOKEN:-}
+      - SALESFORCE_SANDBOX=${SALESFORCE_SANDBOX:-true}
+      # Alternative environment variable names (backward compatibility)
+      - SF_CONSUMER_KEY=${SF_CONSUMER_KEY:-}
+      - SF_CONSUMER_SECRET=${SF_CONSUMER_SECRET:-}
+      - SF_USERNAME=${SF_USERNAME:-}
+      - SF_PASSWORD=${SF_PASSWORD:-}
+      - SF_SECURITY_TOKEN=${SF_SECURITY_TOKEN:-}
+      # Option 2: Direct Token Authentication
+      - SALESFORCE_ACCESS_TOKEN=${SALESFORCE_ACCESS_TOKEN:-}
+      - SALESFORCE_INSTANCE_URL=${SALESFORCE_INSTANCE_URL:-}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    volumes:
+      []
+      # Optional: Mount a config directory if your app needs it
+      # - ./config:/app/config
