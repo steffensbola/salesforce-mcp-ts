@@ -38,7 +38,7 @@
     "docker:publish": "./scripts/docker-publish.sh"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.13.0",
+    "@modelcontextprotocol/sdk": "^1.13.3",
     "axios": "^1.10.0",
     "dotenv": "^16.5.0"
   },
