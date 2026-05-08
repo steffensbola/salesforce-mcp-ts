@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.24.0",
-    "axios": "^1.15.0",
+    "axios": "^1.15.2",
     "dotenv": "^16.5.0"
   },
   "devDependencies": {
